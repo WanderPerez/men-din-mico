@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Dinámico con Submenús</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header Moderno -->
+        <header class="modern-header">
+            <div class="logo">
+                <span class="logo-icon">🚀</span>
+                <h1>Menú Pro</h1>
+            </div>
+            <div class="header-buttons">
+                <button id="toggleAdmin" class="btn btn-primary">
+                    <span class="btn-icon">⚙️</span> Admin
+                </button>
+                <button id="resetMenuBtn" class="btn btn-danger">
+                    <span class="btn-icon">🔄</span> Reset
+                </button>
+            </div>
+        </header>
+
+        <!-- Menú Principal con Submenús -->
+        <nav class="main-nav">
+            <ul id="menuList" class="menu-list"></ul>
+        </nav>
+
+        <!-- Panel de Administración -->
+        <div id="adminPanel" class="admin-panel modern-card" style="display: none;">
+            <div class="panel-header">
+                <h3>🎛️ Panel de Control</h3>
+                <button id="closeAdmin" class="close-btn">✕</button>
+            </div>
+
+            <!-- Pestañas -->
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="add-main">➕ Menú Principal</button>
+                <button class="tab-btn" data-tab="add-sub">📑 Submenú</button>
+                <button class="tab-btn" data-tab="manage">📋 Gestionar</button>
+            </div>
+
+            <!-- Tab: Agregar Menú Principal -->
+            <div id="tab-add-main" class="tab-content active">
+                <form id="mainMenuForm" class="admin-form">
+                    <div class="form-group">
+                        <label>Nombre del Menú</label>
+                        <input type="text" id="mainName" placeholder="Ej: Servicios" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Enlace</label>
+                        <input type="text" id="mainLink" placeholder="Ej: /servicios" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Icono (Emoji)</label>
+                        <input type="text" id="mainIcon" placeholder="Ej: ⚙️">
+                    </div>
+                    <div class="form-group">
+                        <label>¿Tiene Submenú?</label>
+                        <select id="hasSubmenu">
+                            <option value="false">No</option>
+                            <option value="true">Sí</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-success btn-full">Agregar Menú Principal</button>
+                </form>
+            </div>
+
+            <!-- Tab: Agregar Submenú -->
+            <div id="tab-add-sub" class="tab-content">
+                <form id="subMenuForm" class="admin-form">
+                    <div class="form-group">
+                        <label>Menú Principal</label>
+                        <select id="parentMenu" required></select>
+                    </div>
+                    <div class="form-group">
+                        <label>Nombre del Submenú</label>
+                        <input type="text" id="subName" placeholder="Ej: Consultoría" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Enlace</label>
+                        <input type="text" id="subLink" placeholder="Ej: /servicios/consultoria" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Icono (Emoji)</label>
+                        <input type="text" id="subIcon" placeholder="Ej: 📊">
+                    </div>
+                    <button type="submit" class="btn btn-success btn-full">Agregar Submenú</button>
+                </form>
+            </div>
+
+            <!-- Tab: Gestionar -->
+            <div id="tab-manage" class="tab-content">
+                <div class="admin-buttons">
+                    <button onclick="showAvailableIds()" class="btn btn-info">📊 Ver IDs</button>
+                    <button onclick="clearAllItems()" class="btn btn-danger">🗑️ Eliminar Todo</button>
+                </div>
+                <h4>📋 Menús Principales</h4>
+                <ul id="mainItemsList" class="manage-list"></ul>
+                <h4>📑 Submenús</h4>
+                <ul id="subItemsList" class="manage-list"></ul>
+            </div>
+        </div>
+
+        <!-- Mensajes Toast -->
+        <div id="messageBox" class="toast"></div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
