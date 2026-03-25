@@ -1,0 +1,6 @@
+[
+    { "id": 1, "nombre": "Inicio", "enlace": "/home", "icono": "🏠" },
+    { "id": 2, "nombre": "Sobre Nosotros", "enlace": "/about", "icono": "ℹ️" },
+    { "id": 3, "nombre": "Servicios", "enlace": "/services", "icono": "⚙️" },
+    { "id": 4, "nombre": "Contacto", "enlace": "/contact", "icono": "✉️" }
+]
